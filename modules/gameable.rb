@@ -23,6 +23,16 @@ module Gameable
     win_count.fdiv(all_games).round(2)
   end
 
+  def percentage_visitor_wins
+    win_count = hash_hoa_game_teams["away"].count do |game_team|
+      game_team.result == "WIN"
+    end
+    all_games = hash_hoa_game_teams["away"].count do |game_team|
+      game_team
+    end
+    win_count.fdiv(all_games).round(2)
+  end
+
   def hash_hoa_game_teams
     @game_teams.group_by do |game_team|
       game_team.hoa
