@@ -153,5 +153,14 @@ describe StatTracker do
     it 'can find the least tackles' do
       expect(@stat_tracker.fewest_tackles("20142015")).to eq("Orlando City SC")
     end
+
+    it 'can give team information as a hash' do
+      expect(@stat_tracker.team_info("6")).to eq({
+        team_id: "6",
+        franchise_id: "6",
+        team_name: "FC Dallas",
+        abbreviation: "DAL"
+      })
+    end
   end
 end
