@@ -56,8 +56,8 @@ describe StatTracker do
     end
 
     it "all sums of winning and losing teams' scores" do
-      expect(@stat_tracker.all_total_scores).to be_a(Array)
-      expect(@stat_tracker.all_total_scores.all? { |score| score.class == Integer }).to eq(true)
+      expect(@stat_tracker.array_all_total_scores).to be_a(Array)
+      expect(@stat_tracker.array_all_total_scores.all? { |score| score.class == Integer }).to eq(true)
     end
 
     it 'percentage of games that a home team has won' do
