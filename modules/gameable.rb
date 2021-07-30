@@ -43,7 +43,7 @@ module Gameable
     tie_count = @game_teams.count do |game_team|
       game_team.result == "TIE"
     end
-    all_games = @game_teams.count
+    all_games = @game_teams.size
     tie_count.fdiv(all_games).round(2)
   end
 
@@ -59,5 +59,15 @@ module Gameable
     @games.group_by do |game|
       game.season
     end
+  end
+
+  def average_goals_per_game
+    total_away_goals = @games.sum do |game|
+      game.away_goals.to_i
+    end
+    total_home_goals = @games.sum do |game|
+      game.home_goals.to_i
+    end
+    (total_away_goals + total_home_goals).fdiv(@games.size).round(2)
   end
 end
