@@ -63,5 +63,9 @@ describe StatTracker do
     it 'percentage of games that a home team has won' do
       expect(@stat_tracker.percentage_home_wins).to eq(0.44)
     end
+
+    it 'percentage of games that an away team has won' do
+      expect(@stat_tracker.percentage_visitor_wins).to eq(0.36)
+    end
   end
 end
