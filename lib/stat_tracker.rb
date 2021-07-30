@@ -18,3 +18,4 @@ class StatTracker
   def self.from_csv(files)
     new(files)
   end
+end
