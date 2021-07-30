@@ -20,5 +20,9 @@ describe StatTracker do
     it 'exists' do
       expect(@stat_tracker).to be_a(StatTracker)
     end
+
+    it 'has games' do
+      expect(@stat_tracker.games.all? { |game| game.class == Game }).to eq(true)
+    end
   end
 end
