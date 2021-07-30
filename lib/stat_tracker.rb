@@ -1,6 +1,9 @@
 require_relative '../lib/games'
 require_relative '../lib/teams'
 require_relative '../lib/game_teams'
+require_relative '../modules/gameable'
+require_relative '../modules/teamable'
+require_relative '../modules/gameteamable'
 
 class StatTracker
   include Gameable
