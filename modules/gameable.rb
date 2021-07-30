@@ -70,4 +70,14 @@ module Gameable
     end
     (total_away_goals + total_home_goals).fdiv(@games.size).round(2)
   end
+
+  def average_goals_by_season
+    hash_season_average_goals = {}
+    hash_season_games.each do |key, value|
+      hash_season_average_goals[key] = value.sum do |game|
+        game.away_goals.to_i + game.home_goals.to_i
+      end.fdiv(value.size).round(2)
+    end
+    hash_season_average_goals
+  end
 end
