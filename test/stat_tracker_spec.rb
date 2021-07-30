@@ -111,7 +111,15 @@ describe StatTracker do
     end
 
     it 'team with the lowest average of goals scored per game all seasons' do
-      expect(@stat_tracker.worst_offense).to eq "Utah Royals FC"
+      expect(@stat_tracker.worst_offense).to eq("Utah Royals FC")
+    end
+
+    it 'home team with the highest average score per game all seasons' do
+      expect(@stat_tracker.highest_scoring_home_team).to eq("Reign FC")
+    end
+
+    it 'visitor with the highest average score per game all seasons' do
+      expect(@stat_tracker.highest_scoring_visitor).to eq("FC Dallas")
     end
   end
 end
