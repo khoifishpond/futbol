@@ -46,4 +46,18 @@ module Gameable
     all_games = @game_teams.count
     tie_count.fdiv(all_games).round(2)
   end
+
+  def count_of_games_by_season
+    hash_season_game_count = {}
+    hash_season_games.each do |key, value|
+      hash_season_game_count[key] = value.size
+    end
+    hash_season_game_count
+  end
+
+  def hash_season_games
+    @games.group_by do |game|
+      game.season
+    end
+  end
 end
