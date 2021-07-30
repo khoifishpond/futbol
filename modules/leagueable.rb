@@ -17,6 +17,20 @@ module Leagueable
     team.team_name
   end
 
+  def highest_scoring_visitor
+    team = @teams.find do |team|
+      team.team_id == team_id_highest_average_score_away
+    end
+    team.team_name
+  end
+
+  def highest_scoring_home_team
+    team = @teams.find do |team|
+      team.team_id == team_id_highest_average_score_home
+    end
+    team.team_name
+  end
+
   def team_id_best_offense
     hash_team_id_average_goals.key(hash_team_id_average_goals.values.max)
   end
@@ -44,6 +58,20 @@ module Leagueable
       end
       team_id_goals[key] << value.size
     end
+  end
+
+  def team_id_highest_average_score_away
+    best_away_average_score = hash_team_id_hoa_goals.values.max_by do |hoa|
+      hoa["away"]
+    end
+    hash_team_id_hoa_goals.key(best_away_average_score)
+  end
+
+  def team_id_highest_average_score_home
+    best_home_average_score = hash_team_id_hoa_goals.values.max_by do |hoa|
+      hoa["home"]
+    end
+    hash_team_id_hoa_goals.key(best_home_average_score)
   end
 
   def hash_team_id_hoa_goals
