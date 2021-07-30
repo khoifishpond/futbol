@@ -38,4 +38,12 @@ module Gameable
       game_team.hoa
     end
   end
+
+  def percentage_ties
+    tie_count = @game_teams.count do |game_team|
+      game_team.result == "TIE"
+    end
+    all_games = @game_teams.count
+    tie_count.fdiv(all_games).round(2)
+  end
 end
