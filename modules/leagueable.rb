@@ -46,6 +46,16 @@ module Leagueable
     end
   end
 
+  def hash_team_id_hoa_games
+    team_id_hoa_games = {}
+    hash_team_id_games.each do |key, value|
+      team_id_hoa_games[key] = value.group_by do |game_team|
+        game_team.hoa
+      end
+    end
+    team_id_hoa_games
+  end
+
   def hash_team_id_games
     @game_teams.group_by do |game_team|
       game_team.team_id
