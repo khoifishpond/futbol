@@ -46,6 +46,18 @@ module Leagueable
     end
   end
 
+  def hash_team_id_hoa_goals
+    team_id_hoa_goals = {}
+    hash_team_id_hoa_games.each do |key_team, value_hash|
+      team_id_hoa_goals[key_team] = value_hash.each do |key_hoa, value_array|
+        value_hash[key_hoa] = value_array.sum do |game_team|
+          game_team.goals.to_i
+        end.fdiv(value_array.size)
+      end
+    end
+    team_id_hoa_goals
+  end
+
   def hash_team_id_hoa_games
     team_id_hoa_games = {}
     hash_team_id_games.each do |key, value|
