@@ -54,5 +54,10 @@ describe StatTracker do
     it "lowest sum of winning and losing teams' scores" do
       expect(@stat_tracker.lowest_total_score).to eq(0)
     end
+
+    it "all sums of winning and losing teams' scores" do
+      expect(@stat_tracker.all_total_scores).to be_a(Array)
+      expect(@stat_tracker.all_total_scores.all? { |score| score.class == Integer }).to eq(true)
+    end
   end
 end
