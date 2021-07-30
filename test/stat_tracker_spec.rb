@@ -5,16 +5,16 @@ SimpleCov.start
 
 describe StatTracker do
   context 'Attributes' do
-    before(:each) do
-      @game_path = './data/games.csv'
-      @team_path = './data/teams.csv'
-      @game_teams_path = './data/game_teams.csv'
-      @locations = {
-        games: @game_path,
-        teams: @team_path,
-        game_teams: @game_teams_path
+    before(:all) do
+      game_path = './data/games.csv'
+      team_path = './data/teams.csv'
+      game_teams_path = './data/game_teams.csv'
+      locations = {
+        games: game_path,
+        teams: team_path,
+        game_teams: game_teams_path
       }
-      @stat_tracker ||= StatTracker.from_csv(@locations)
+      @stat_tracker ||= StatTracker.from_csv(locations)
     end
     
     it 'exists' do
@@ -31,6 +31,20 @@ describe StatTracker do
 
     it 'has game teams' do
       expect(@stat_tracker.game_teams.all? { |game_team| game_team.class == GameTeam }).to eq(true)
+    end
+  end
+
+  context 'Calculations' do
+    before(:all) do
+      game_path = './data/games.csv'
+      team_path = './data/teams.csv'
+      game_teams_path = './data/game_teams.csv'
+      locations = {
+        games: game_path,
+        teams: team_path,
+        game_teams: game_teams_path
+      }
+      @stat_tracker ||= StatTracker.from_csv(locations)
     end
 
     it "highest sum of winning and losing teams' scores" do
