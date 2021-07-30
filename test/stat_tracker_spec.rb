@@ -24,5 +24,10 @@ describe StatTracker do
     it 'has games' do
       expect(@stat_tracker.games.all? { |game| game.class == Game }).to eq(true)
     end
+
+    it 'has games' do
+      expect(@stat_tracker.games.all? { |game| game.class == Game }).to eq(true)
+      expect(@stat_tracker.teams.all? { |team| team.class == Game }).to eq(true)
+    end
   end
 end
