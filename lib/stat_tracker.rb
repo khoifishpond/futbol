@@ -3,12 +3,14 @@ require_relative '../lib/teams'
 require_relative '../lib/game_teams'
 require_relative '../modules/gameable'
 require_relative '../modules/teamable'
-require_relative '../modules/gameteamable'
+require_relative '../modules/leagueable'
+require_relative '../modules/seasonable'
 
 class StatTracker
   include Gameable
   include Teamable
-  include GameTeamable
+  include Leagueable
+  include Seasonable
 
   attr_reader :games, :teams, :game_teams
 
