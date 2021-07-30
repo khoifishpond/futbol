@@ -1,3 +1,3 @@
-module GameTeamable
+module Leagueable
 
 end
