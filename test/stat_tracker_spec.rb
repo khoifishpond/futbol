@@ -32,5 +32,9 @@ describe StatTracker do
     it 'has game teams' do
       expect(@stat_tracker.game_teams.all? { |game_team| game_team.class == GameTeam }).to eq(true)
     end
+
+    it "highest sum of winning and losing teams' scores" do
+      expect(@stat_tracker.highest_total_score).to eq(11)
+    end
   end
 end
