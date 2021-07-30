@@ -129,5 +129,29 @@ describe StatTracker do
     it 'visitor with the lowest average score per game all seasons' do
       expect(@stat_tracker.lowest_scoring_visitor).to eq("San Jose Earthquakes")
     end
+
+    it 'can find the winningest coach of a season' do
+      expect(@stat_tracker.winningest_coach("20132014")).to eq("Claude Julien")
+    end
+
+    it 'can find the worst coach of a season' do
+      expect(@stat_tracker.worst_coach("20132014")).to eq("Peter Laviolette")
+    end
+
+    it 'can find the most accurate team' do
+      expect(@stat_tracker.most_accurate_team("20142015")).to eq("Toronto FC")
+    end
+
+    it 'can find the least accurate team' do
+      expect(@stat_tracker.least_accurate_team("20142015")).to eq("Columbus Crew SC")
+    end
+
+    it 'can find the most tackles' do
+      expect(@stat_tracker.most_tackles("20142015")).to eq("Seattle Sounders FC")
+    end
+
+    it 'can find the least tackles' do
+      expect(@stat_tracker.fewest_tackles("20142015")).to eq("Orlando City SC")
+    end
   end
 end
