@@ -50,5 +50,9 @@ describe StatTracker do
     it "highest sum of winning and losing teams' scores" do
       expect(@stat_tracker.highest_total_score).to eq(11)
     end
+
+    it "lowest sum of winning and losing teams' scores" do
+      expect(@stat_tracker.lowest_total_score).to eq(0)
+    end
   end
 end
