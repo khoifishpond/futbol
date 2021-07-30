@@ -1,3 +1,4 @@
+require_relative '../modules/readable'
 require 'csv'
 
 class Game
@@ -18,12 +19,4 @@ class Game
     @away_goals ||= row["away_goals"].to_i
     @home_goals ||= row["home_goals"].to_i
   end
-
-  # this could be a module accross all file classes?
-#   def self.file(location)
-#     rows = CSV.read(location, headers: true)
-#     rows.map do |row|
-#       new(row)
-#     end
-#   end
-# end
+end
