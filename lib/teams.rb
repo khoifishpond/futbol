@@ -2,7 +2,7 @@ require_relative '../modules/readable'
 require 'csv'
 
 class Team
-  include Readable
+  extend Readable
 
   attr_reader :team_id,
               :franchise_id,

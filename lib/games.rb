@@ -2,7 +2,7 @@ require_relative '../modules/readable'
 require 'csv'
 
 class Game
-  include Readable
+  extend Readable
 
   attr_reader :game_id,
               :season,
