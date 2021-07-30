@@ -59,5 +59,9 @@ describe StatTracker do
       expect(@stat_tracker.all_total_scores).to be_a(Array)
       expect(@stat_tracker.all_total_scores.all? { |score| score.class == Integer }).to eq(true)
     end
+
+    it 'percentage of games that a home team has won' do
+      expect(@stat_tracker.percentage_home_wins).to eq(0.44)
+    end
   end
 end
