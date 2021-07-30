@@ -101,5 +101,9 @@ describe StatTracker do
         }
       )
     end
+
+    it 'total number of teams' do
+      expect(@stat_tracker.count_of_teams).to eq(32)
+    end
   end
 end
