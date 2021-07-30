@@ -105,5 +105,13 @@ describe StatTracker do
     it 'total number of teams' do
       expect(@stat_tracker.count_of_teams).to eq(32)
     end
+
+    it 'team with highest average of goals scored per game all seasons' do
+      expect(@stat_tracker.best_offense).to eq("Reign FC")
+    end
+
+    it 'team with the lowest average of goals scored per game all seasons' do
+      expect(@stat_tracker.worst_offense).to eq "Utah Royals FC"
+    end
   end
 end
