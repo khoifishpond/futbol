@@ -84,5 +84,9 @@ describe StatTracker do
         }
       )
     end
+
+    it 'average total goals per game acroos all seasons' do
+      expect(@stat_tracker.average_goals_by_game).to eq(5.0)
+    end
   end
 end
