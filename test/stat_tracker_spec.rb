@@ -178,5 +178,9 @@ describe StatTracker do
     it 'can find the highest number of goals in a single game for a team' do
       expect(@stat_tracker.most_goals_scored("18")).to eq(7)
     end
+
+    it 'can find the lowest number of goals in a single game for a team' do
+      expect(@stat_tracker.fewest_goals_scored("18")).to eq(0)
+    end
   end
 end
