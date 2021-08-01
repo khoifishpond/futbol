@@ -49,6 +49,52 @@ module Teamable
     fewest_goals_scored_by_team[team_id]
   end
 
+  def favorite_opponent(team_id)
+    id = opponent_win_percentage(team_id).key(opponent_win_percentage(team_id).values.min)
+    team = get_team_with_id(id)
+    team.team_name
+  end
+
+  def rival(team_id)
+    id = opponent_win_percentage(team_id).key(opponent_win_percentage(team_id).values.max)
+    team = get_team_with_id(id)
+    team.team_name
+  end
+
+  def opponent_win_percentage(team_id)
+    team_win_percentage = {}
+    hash_opponent_wins_all_games(team_id).each do |key_team, value_wins_games|
+      team_win_percentage[key_team] = value_wins_games[0].fdiv(value_wins_games[1])
+    end
+    team_win_percentage
+  end
+
+  def hash_opponent_wins_all_games(team_id)
+    opponent_wins_all_games = {}
+    opponent_games(team_id).each do |key_team, value_games|
+      opponent_wins_all_games[key_team] ||= []
+      opponent_wins_all_games[key_team] << value_games.count do |game|
+        if key_team == game.away_team_id
+          game.away_goals > game.home_goals
+        elsif key_team == game.home_team_id
+          game.home_goals > game.away_goals
+        end
+      end
+      opponent_wins_all_games[key_team] << value_games.size
+    end
+    opponent_wins_all_games
+  end
+
+  def opponent_games(team_id)
+    array_games_by_team_id(team_id).group_by do |game|
+      if team_id == game.away_team_id
+        game.home_team_id
+      elsif team_id == game.home_team_id
+        game.away_team_id
+      end
+    end
+  end
+
   def hash_average_wins_percentage_by_team
     team_overall_win_percentage = {}
     hash_wins_and_total_games_by_team.each do |key_team, value_wins_games|
