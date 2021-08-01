@@ -175,6 +175,8 @@ describe StatTracker do
       expect(@stat_tracker.average_win_percentage("6")).to eq(0.49)
     end
 
-    
+    it 'can find the highest number of goals in a single game for a team' do
+      expect(@stat_tracker.most_goals_scored("18")).to eq(7)
+    end
   end
 end
