@@ -170,5 +170,11 @@ describe StatTracker do
     it 'season with the lowest win percentage for a team' do
       expect(@stat_tracker.worst_season("6")).to eq("20142015")
     end
+    
+    it 'average win percentage overall for a team' do
+      expect(@stat_tracker.average_win_percentage("6")).to eq(0.49)
+    end
+
+    
   end
 end
