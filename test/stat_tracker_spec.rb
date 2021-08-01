@@ -182,5 +182,9 @@ describe StatTracker do
     it 'can find the lowest number of goals in a single game for a team' do
       expect(@stat_tracker.fewest_goals_scored("18")).to eq(0)
     end
+
+    it 'finds favorite opponent that has the lowest win percentage' do
+      expect(@stat_tracker.favorite_opponent("18")).to eq("DC United")
+    end
   end
 end
