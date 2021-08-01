@@ -29,6 +29,26 @@ module Teamable
     hash_average_wins_percentage_by_team[team_id]
   end
 
+  def most_goals_scored(team_id)
+    most_goals_scored_by_team = {}
+    hash_game_teams_by_team_id.each do |key_team, value_game_teams|
+      most_goals_scored_by_team[key_team] = value_game_teams.map do |game_team|
+        game_team.goals.to_i
+      end.max
+    end
+    most_goals_scored_by_team[team_id]
+  end
+
+  def fewest_goals_scored(team_id)
+    fewest_goals_scored_by_team = {}
+    hash_game_teams_by_team_id.each do |key_team, value_game_teams|
+      fewest_goals_scored_by_team[key_team] = value_game_teams.map do |game_team|
+        game_team.goals.to_i
+      end.min
+    end
+    fewest_goals_scored_by_team[team_id]
+  end
+
   def hash_average_wins_percentage_by_team
     team_overall_win_percentage = {}
     hash_wins_and_total_games_by_team.each do |key_team, value_wins_games|
