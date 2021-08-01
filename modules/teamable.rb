@@ -23,7 +23,36 @@ module Teamable
   def worst_season(team_id)
     seasons_win_percentage = hash_season_games_won_percentage_by_team_id(team_id)
     seasons_win_percentage.key(seasons_win_percentage.values.min)
-    require 'pry'; binding.pry
+  end
+
+  def average_win_percentage(team_id)
+    hash_average_wins_percentage_by_team[team_id]
+  end
+
+  def hash_average_wins_percentage_by_team
+    team_overall_win_percentage = {}
+    hash_wins_and_total_games_by_team.each do |key_team, value_wins_games|
+      team_overall_win_percentage[key_team] = value_wins_games[0].fdiv(value_wins_games[1]).round(2)
+    end
+    team_overall_win_percentage
+  end
+
+  def hash_wins_and_total_games_by_team
+    team_wins_all_games = {}
+    hash_game_teams_by_team_id.each do |key_team, value_game_teams|
+      team_wins_all_games[key_team] ||= []
+      team_wins_all_games[key_team] << value_game_teams.count do |game_team|
+        game_team.result == "WIN"
+      end
+      team_wins_all_games[key_team] << value_game_teams.size
+    end
+    team_wins_all_games
+  end
+
+  def hash_game_teams_by_team_id
+    @game_teams.group_by do |game_team|
+      game_team.team_id
+    end
   end
   
   def hash_season_games_won_percentage_by_team_id(team_id)
