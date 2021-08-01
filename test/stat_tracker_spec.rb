@@ -186,5 +186,9 @@ describe StatTracker do
     it 'finds favorite opponent that has the lowest win percentage' do
       expect(@stat_tracker.favorite_opponent("18")).to eq("DC United")
     end
+
+    it 'finds rival opponent that has the highest win percentage' do
+      expect(@stat_tracker.rival("18")).to eq("Houston Dash").or(eq("LA Galaxy"))
+    end
   end
 end
